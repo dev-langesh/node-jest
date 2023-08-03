@@ -22,7 +22,7 @@ describe("Unit test for products", () => {
 
     // console.log(res.body);
 
-    expect(res.statusCode).toBe(200);
+    expect(res.statusCode).toBe(20);
     expect(res.body).toContain(item);
   });
 });
