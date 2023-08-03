@@ -7,9 +7,15 @@ pipeline {
       }
     }
 
+    stage('create container') {
+      steps {
+        sh 'docker run --name node-jest:$BUILD_NUMBER -d --rm node-jest:$BUILD_NUMBER'
+      }
+    }
+
     stage('test') {
       steps {
-        sh 'npm test'
+        sh 'docker exec node-jest:$BUILD_NUMBER npm test'
       }
     }
 
