@@ -1,8 +1,12 @@
-const { app } = require("..");
+const { app, server } = require("..");
 const { getProducts } = require("../controllers/getProducts");
 const supertest = require("supertest");
 
 describe("Unit test for products", () => {
+  afterAll((done) => {
+    server.close(done);
+  });
+
   it("List the products", async () => {
     const res = await supertest(app).get("/");
 
